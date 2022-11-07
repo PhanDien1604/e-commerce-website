@@ -1,7 +1,7 @@
 <template lang="">
   <a-layout-content>
     <a-button type="primary">
-      Add
+      <router-link :to="{name: 'admin.product.create'}">Add</router-link>
     </a-button>
 
     <a-table 
@@ -68,7 +68,7 @@
         </span>
         <template v-else-if="column.key === 'action'">
           <span>
-            <router-link :to="{name: 'admin.product'}">Detail</router-link>
+            <router-link :to="{name: 'admin.product.detail'}">Detail</router-link>
           </span>
         </template>
         <template v-else-if="column.key === 'image'">

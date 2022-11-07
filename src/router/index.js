@@ -21,6 +21,16 @@ const router = createRouter({
           component: () => import('../views/pages/admin/product/Index.vue')
         },
         {
+          path: '/admin/product/create',
+          name: 'admin.product.create',
+          component: () => import('../views/pages/admin/product/Create.vue')
+        },
+        {
+          path: '/admin/product/detail',
+          name: 'admin.product.detail',
+          component: () => import('../views/pages/admin/product/Detail.vue')
+        },
+        {
           path: '/admin/customer',
           name: 'admin.customer',
           component: () => import('../views/pages/admin/customer/Index.vue')

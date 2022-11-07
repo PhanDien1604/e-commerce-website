@@ -7,7 +7,8 @@ export default {
             {
               title: 'Image',
               dataIndex: 'image',
-              key: 'image'
+              key: 'image',
+              responsive: ['xl']
             },
             {
               title: 'Code',
@@ -37,22 +38,26 @@ export default {
                 }
               },
               sorter: (a, b) => a.name.localeCompare(b.name),
+              responsive: ['xl']
             }, 
             {
               title: 'Price',
               dataIndex: 'price',
               key: 'price',
               sorter: (a, b) => a.price - b.price,
+              responsive: ['xl']
             },
             {
               title: 'Amount',
               dataIndex: 'amount',
-              key: 'amount'
+              key: 'amount',
+              responsive: ['xl']
             }, 
             {
               title: 'Status',
               key: 'status',
               dataIndex: 'status',
+              responsive: ['xl']
             }, 
             {
               title: 'Action',

@@ -3,7 +3,6 @@
     :style="{overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0, padding: '8px'}"
     v-model:collapsed="collapsed" 
     :trigger="null" 
-    collapsible
     :theme="themed"
     :class="{slider: !collapsed}"
   >
