@@ -11,12 +11,22 @@
 .mt-2 {
     margin-top: 0.5rem;
 }
+.mt-3 {
+    margin-top: 1rem;
+}
+.pe-2{
+    padding-right: 0.5rem;
+}
 .mx-2 {
     margin: 0 0.5rem;
 }
 
 .mx-3 {
     margin: 1rem;
+}
+
+.py-3 {
+    padding: 1rem 0;
 }
 
 .border-1 {
@@ -30,10 +40,43 @@
     font-size: 18px;
 }
 
+.position-relative {
+    position: relative;
+}
+
 .shadow-right {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 
 .fw-bold {
     font-weight: 700;
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container {
+    max-width: 1366px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.badge {
+    position: absolute;
+    content: '';
+    background-color: #ff0000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    top: -5px;
+    right: 0;
 }

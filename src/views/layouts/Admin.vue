@@ -11,9 +11,9 @@
     </a-layout>
 </template>
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-import Slider from '@/components/Slider.vue'
+import Header from '@/components/admin/blocks/Header.vue'
+import Footer from '@/components/admin/blocks/Footer.vue'
+import Slider from '@/components/admin/blocks/Slider.vue'
 import {mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {

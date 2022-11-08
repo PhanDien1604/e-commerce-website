@@ -6,6 +6,7 @@ import storeConfigs from './store';
 import Antd from 'ant-design-vue';
 
 import './assets/css/main.css';
+import './assets/sass/main.scss';
 import 'ant-design-vue/dist/antd.css';
 
 const app = createApp(App)

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        Tiki
+    <div class="content">
+        <h3>Content</h3>
     </div>
 </template>
 <script>

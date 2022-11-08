@@ -31,12 +31,6 @@
         </a-row>
       </a-col>
       <a-col>
-        <div class="box-logo">
-          <img src="@/assets/images/logo.png" alt="">
-          <span class="fw-bold">PTIT</span>
-        </div>
-      </a-col>
-      <a-col>
         <a-row>
           <a-col>
             <a-badge count="5" :style="{right: '5px'}">
@@ -132,16 +126,6 @@ export default defineComponent({
   box-shadow: 0 5px 10px -10px gray;
   z-index: 1000;
   right: 0;
-}
-
-.box-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.box-logo img{
-  width: 25px;
-  margin-right: 8px;
 }
 .header {
   .btn-link {
