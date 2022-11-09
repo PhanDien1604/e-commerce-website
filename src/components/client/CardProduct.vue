@@ -39,30 +39,30 @@ export default {
 }
 .card-product {
   padding: 2px;
-}
 
-.ant-card-cover {
-  height: 222px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
+  .ant-card-cover {
+    height: 222px;
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+    }
   }
-}
-
-.ant-card-body {
-  padding: 16px;
-}
-
-.ant-card-meta-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  white-space: normal;
-  overflow: hidden;
-  height: 50.28px;
-}
-.txt-promotion {
-  height: 37.69px;
+  
+  .ant-card-body {
+    padding: 16px;
+  }
+  
+  .ant-card-meta-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+    height: 50.28px;
+  }
+  .txt-promotion {
+    height: 37.69px;
+  }
 }
 </style>

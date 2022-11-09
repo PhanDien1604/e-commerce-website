@@ -1,6 +1,8 @@
 <template>
   <div class="content">
     <Slider />
+    <Category />
+    <Banner />
     <div class="list-product">
       <a-row>
         <a-col :span="4" v-for="product in products.dataSource" :key="product" >
@@ -11,15 +13,19 @@
   </div>
 </template>
 <script>
-import CardProduct from '@/components/client/CardProduct.vue'
 import Slider from '@/components/client/blocks/Slider.vue'
+import CardProduct from '@/components/client/CardProduct.vue'
+import Category from '@/components/client/Category.vue'
+import Banner from '@/components/client/Banner.vue'
 
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   components: {
     CardProduct,
-    Slider
+    Slider,
+    Category,
+    Banner
   },
   created() {
     this.getDataSourceProducts()
@@ -35,6 +41,6 @@ export default {
 </script>
 <style>
 .list-product {
-  margin: 16px -2px;
+  margin: 0 -2px;
 } 
 </style>

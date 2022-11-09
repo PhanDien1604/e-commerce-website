@@ -31,10 +31,6 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
   data() {
     return {
-      slickOptions: {
-        arrows: true,
-        dots: true,
-      },
       banners: [
         'banner-1.png',
         'banner-2.png',
