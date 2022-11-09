@@ -1,9 +1,9 @@
 <template lang="">
   <div class="card-product">
-    <router-link :to="{name: 'detail'}">
+    <router-link :to="{name: 'detailProduct'}">
       <a-card hoverable >
         <template #cover>
-          <img alt="example" :src="'src/assets/images/products/' + product.image" />
+          <img alt="example" :src="'/src/assets/images/products/' + product.image" />
         </template>
         <a-card-meta>
           <template #title>
@@ -38,7 +38,7 @@ export default {
   font-size: 12px;
 }
 .card-product {
-  padding: 2px;
+  padding: 1px;
 
   .ant-card-cover {
     height: 222px;

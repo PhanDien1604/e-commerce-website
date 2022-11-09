@@ -5,28 +5,32 @@
       <Slide v-for="slide in 10" :key="slide">
         <a-row type="flex">
           <a-col :span="24">
-            <a-card hoverable>
-              <template #cover>
-                <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
-              </template>
-              <a-card-meta>
-                <template #title>
-                  <span class="font-size-13">Giày thể thao nam</span>
+            <router-link :to="{name: 'groupProduct'}">
+              <a-card hoverable>
+                <template #cover>
+                  <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
                 </template>
-              </a-card-meta>
-            </a-card>
+                <a-card-meta>
+                  <template #title>
+                    <span class="font-size-13">Giày thể thao nam</span>
+                  </template>
+                </a-card-meta>
+              </a-card>
+            </router-link>
           </a-col>
           <a-col :span="24">
-            <a-card hoverable>
-              <template #cover>
-                <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
-              </template>
-              <a-card-meta>
-                <template #title>
-                  <span class="font-size-13">Shop</span>
+            <router-link :to="{name: 'groupProduct'}">
+              <a-card hoverable>
+                <template #cover>
+                  <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
                 </template>
-              </a-card-meta>
-            </a-card>
+                <a-card-meta>
+                  <template #title>
+                    <span class="font-size-13">Shop</span>
+                  </template>
+                </a-card-meta>
+              </a-card>
+            </router-link>
           </a-col>
         </a-row>
       </Slide>

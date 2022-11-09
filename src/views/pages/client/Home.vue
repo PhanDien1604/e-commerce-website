@@ -34,7 +34,6 @@ export default {
     ...mapGetters(['products'])
   },
   methods: {
-    ...mapMutations(['setProduct']),
     ...mapActions(['getDataSourceProducts'])
   }
 }

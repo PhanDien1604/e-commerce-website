@@ -14,6 +14,9 @@ body {
 .mt-3 {
     margin-top: 1rem;
 }
+.my-3 {
+    margin: 1rem 0;
+}
 .pe-2{
     padding-right: 0.5rem;
 }
@@ -27,6 +30,10 @@ body {
 
 .py-3 {
     padding: 1rem 0;
+}
+
+.ps-3 {
+    padding-left: 1rem;
 }
 
 .border-1 {
@@ -49,6 +56,10 @@ body {
 
 .shadow-right {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.rounded {
+    border-radius: 8px;
 }
 
 .fw-bold {
@@ -98,4 +109,8 @@ body {
 
 .font-size-12 {
     font-size: 12px;
+}
+
+.bg-light {
+    background-color: #fff;
 }
