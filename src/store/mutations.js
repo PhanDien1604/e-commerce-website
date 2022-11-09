@@ -10,5 +10,8 @@ export default {
     },
     setDataSourceProducts(state, dataSource) {
         state.products.dataSource = dataSource
-    }
+    },
+    setProduct(state, product) {
+        state.product = product
+    },
 }

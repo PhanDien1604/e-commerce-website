@@ -5,7 +5,7 @@
         <Carousel :items-to-show="1" :autoplay="2000" :wrap-around="true">
           <Slide v-for="slide in banners" :key="slide">
             <div class="carousel__item">
-              <img :src="'src/assets/images/'+ slide" alt="">
+              <img :src="'src/assets/images/banners/'+ slide" alt="">
             </div>
           </Slide>
       
@@ -17,7 +17,7 @@
       </a-col>
       <a-col :span="8">
         <div class="banner-sub">
-          <img src="src/assets/images/banner-sub.png" alt="">
+          <img src="src/assets/images/banners/banner-sub.png" alt="">
         </div>
       </a-col>
     </a-row>
