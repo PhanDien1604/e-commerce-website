@@ -31,7 +31,8 @@ export default {
 <style lang="scss">
 .price {
   color: red;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .promotion {
@@ -50,7 +51,7 @@ export default {
   }
   
   .ant-card-body {
-    padding: 16px;
+    padding: 8px 16px 16px 16px;
   }
   
   .ant-card-meta-title {

@@ -27,6 +27,10 @@
     transform: translateX(-50%);
 
     &-button {
+      &:hover::after {
+        background-color: #fff;
+      }
+
       &::after {
         background: #ffffff80;
         width: 10px;
@@ -85,5 +89,34 @@
   .carousel__prev--disabled,
   .carousel__next--disabled {
     display: none;
+  }
+}
+
+.group-product {
+  .carousel {
+    margin-bottom: 32px;
+  }
+  .carousel__pagination {
+    padding: 0;
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &-button {
+      &:hover::after {
+        background-color: #1a94ff;
+      }
+
+      &::after {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      &--active::after {
+        background: #1a94ff;
+      }
+    }
   }
 }
