@@ -8,6 +8,7 @@ import Antd from 'ant-design-vue';
 import './assets/css/main.css';
 import './assets/sass/main.scss';
 import 'ant-design-vue/dist/antd.css';
+import 'vue3-carousel/dist/carousel.css'
 
 const app = createApp(App)
 

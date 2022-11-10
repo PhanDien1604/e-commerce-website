@@ -12,7 +12,6 @@
   </div>
 </template>
 <script>
-import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import CardProduct from '@/components/client/CardProduct.vue'

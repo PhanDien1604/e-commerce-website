@@ -97,7 +97,6 @@
 </template>
 <script>
 import {PlusOutlined, MinusOutlined} from '@ant-design/icons-vue';
-import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import SimilarProduct from '@/components/client/SimilarProduct.vue'
 import DescribeProduct from '@/components/client/DescribeProduct.vue'
