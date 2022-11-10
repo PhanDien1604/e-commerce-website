@@ -257,11 +257,6 @@ export default {
       padding: 1rem;
       border-left: 1px solid #f1f1f1;
 
-      .custom-hr {
-        background-color: #f1f1f1;
-        height: 0.5px;
-      }
-
       .left {
         padding-right: 1rem;
         .box-price {

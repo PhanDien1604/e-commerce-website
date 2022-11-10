@@ -8,6 +8,9 @@ body {
 .px-3 {
     padding: 0 1rem;
 }
+.mt-1 {
+    margin-top: 0.25rem;
+}
 .mt-2 {
     margin-top: 0.5rem;
 }
@@ -113,4 +116,13 @@ body {
 
 .bg-light {
     background-color: #fff;
+}
+
+.custom-hr {
+    background-color: #f1f1f1;
+    height: 0.5px;
+}
+
+.w-100 {
+    width: 100%;
 }
