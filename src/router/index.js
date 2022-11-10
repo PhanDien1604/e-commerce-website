@@ -89,9 +89,15 @@ const router = createRouter({
           component: () => import('../views/pages/client/product/Detail.vue')
         },
         {
-          path: '/product/group',
+          path: '/group/product',
           name: 'groupProduct',
           component: () => import('../views/pages/client/product/Group.vue')
+        }
+        ,
+        {
+          path: '/shop',
+          name: 'shop',
+          component: () => import('../views/pages/client/Shop.vue')
         }
       ]
     }

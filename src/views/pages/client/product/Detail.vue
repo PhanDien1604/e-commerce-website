@@ -46,7 +46,8 @@
               <div class="my-3 custom-hr"></div>
   
               <div class="delivery-address">
-                Giao đến: <span class="address">Mộ lao, Hà Đông, Hà Nội</span> - <a href="#">Đổi địa chỉ</a>
+                Giao đến: <span class="address">Mộ lao, Hà Đông, Hà Nội</span> - <span class="change-address" @click="setVisibleChangeAddress(true)">Đổi địa chỉ</span>
+                <ChangeAddress />
               </div>
   
               <div class="my-3 custom-hr"></div>
@@ -73,8 +74,37 @@
               </div>
             </a-col>
             <a-col :span="8" class="right">
-              <div class="shop">
-                Shop
+              <div class="box-shop">
+                <div class="shop-header">
+                  <div class="box-avatar">
+                    <img src="/src/assets/images/shop/avatar.png" alt="">
+                  </div>
+                  <h2 class="name-shop">
+                    Tiki Tranding
+                  </h2>
+                </div>
+                <div class="shop-slider">
+                  <a-row :gutter="[8,8]">
+                    <a-col :span="12">
+                      <a-button type="primary" ghost class="w-100">
+                        <router-link :to="{name: 'shop'}">
+                          <ShopOutlined />
+                          Xem shop
+                        </router-link>
+                      </a-button>
+                    </a-col>
+                    <a-col :span="12">
+                      <a-button type="primary" ghost class="w-100">
+                        <PlusOutlined />
+                        Theo dõi
+                      </a-button>
+                    </a-col>
+                  </a-row>
+                </div>
+                <div class="custom-hr"></div>
+                <div class="shop-body">
+                  Thông tin shop
+                </div>
               </div>
             </a-col>
           </a-row>
@@ -96,10 +126,12 @@
   </div>
 </template>
 <script>
-import {PlusOutlined, MinusOutlined} from '@ant-design/icons-vue';
+import {PlusOutlined, MinusOutlined, ShopOutlined} from '@ant-design/icons-vue';
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import SimilarProduct from '@/components/client/SimilarProduct.vue'
 import DescribeProduct from '@/components/client/DescribeProduct.vue'
+import ChangeAddress from '@/components/client/ChangeAddress.vue'
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   created() {
@@ -126,7 +158,9 @@ export default {
     Slide,
     Navigation,
     SimilarProduct,
-    DescribeProduct
+    DescribeProduct,
+    ShopOutlined,
+    ChangeAddress
   },
   methods: {
     changeAmount(e) {
@@ -173,6 +207,7 @@ export default {
     slideTo(val) {
       this.currentSlide = val
     },
+    ...mapMutations(['setVisibleChangeAddress']),
   }
 }
 </script>
@@ -292,6 +327,11 @@ export default {
           a {
             font-weight: 600;
           }
+
+          .change-address {
+            color: #1890ff;
+            cursor: pointer;
+          }
         }
 
         .box-amount {
@@ -358,6 +398,45 @@ export default {
             border: 1px solid red;
           }
         }
+      }
+    }
+
+    .box-shop {
+      border: 1px solid #f1f1f1;
+      border-radius: 4px;
+
+      .shop-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        padding: 1rem;
+        padding-bottom: 0;
+
+        .box-avatar {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 8px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .name-shop {
+          margin-bottom: 0;
+        }
+      }
+
+      .shop-slider {
+        margin: 16px 0;
+        padding: 0 1rem;
+      }
+
+      .shop-body {
+        padding: 1rem;
+        border-radius: 4px;
       }
     }
   }

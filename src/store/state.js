@@ -2,6 +2,7 @@ export default {
     collapsed: false,
     themed: 'dark',
     selectedKeys: '',
+    visibleChangeAddress: false,
     products: {
         columns: [
             {

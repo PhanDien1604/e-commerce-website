@@ -3,7 +3,8 @@
     <div class="filter-item">
       <h3>Địa chỉ nhận hàng</h3>
       <span class="text-ellipsis address">Mộ Lao, Hà Đông, Hà Nội</span> <br>
-      <a href="#" class="change-address">Đổi địa chỉ</a>
+      <div class="change-address" @click="setVisibleChangeAddress(true)">Đổi địa chỉ</div>
+      <ChangeAddress />
     </div>
 
     <div class="custom-hr"></div>
@@ -56,12 +57,18 @@
   </div>
 </template>
 <script>
+import { mapMutations } from 'vuex'
+import ChangeAddress from '@/components/client/ChangeAddress.vue'
+
 export default {
   data() {
     return {
       priceFrom: 0,
       priceTo: 0
     }
+  },
+  components: {
+    ChangeAddress,
   },
   methods: {
     changePriceFrom(e) {
@@ -77,7 +84,8 @@ export default {
       } else {
         this.priceTo = '0'
       }
-    }
+    },
+    ...mapMutations(['setVisibleChangeAddress']),
   }
 }
 </script>
@@ -88,6 +96,8 @@ export default {
     }
     .change-address {
       font-weight: 600;
+      color: #1890ff;
+      cursor: pointer;
     }
     .filter-item {
       padding: 1rem;

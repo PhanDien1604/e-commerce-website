@@ -8,6 +8,10 @@ export default {
     setSelectedKeys(state, selectedKeys) {
         state.selectedKeys = selectedKeys
     },
+    setVisibleChangeAddress(state, visibleChangeAddress) {
+        console.log(state.visibleChangeAddress)
+        state.visibleChangeAddress = visibleChangeAddress
+    },
     setDataSourceProducts(state, dataSource) {
         state.products.dataSource = dataSource
     },
