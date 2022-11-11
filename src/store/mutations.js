@@ -8,6 +8,18 @@ export default {
     setSelectedKeys(state, selectedKeys) {
         state.selectedKeys = selectedKeys
     },
+    setAmountProduct(state, amountProduct) {
+        state.amountProduct = amountProduct
+    },
+    setTotalProduct(state, totalProducts) {
+        state.totalProducts = totalProducts
+    },
+    setDisablePlus(state, disablePlus) {
+        state.disablePlus = disablePlus
+    },
+    setDisableMinus(state, disableMinus) {
+        state.disableMinus = disableMinus
+    },
     setVisibleChangeAddress(state, visibleChangeAddress) {
         console.log(state.visibleChangeAddress)
         state.visibleChangeAddress = visibleChangeAddress

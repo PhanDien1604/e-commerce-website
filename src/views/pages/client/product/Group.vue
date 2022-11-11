@@ -25,7 +25,7 @@
             </Carousel>
           </div>
 
-          <div class="selected-filter-menu">
+          <div class="selected-filter-menu custom-menu-ant">
             <a-menu v-model:selectedKeys="current" mode="horizontal">
               <a-menu-item key="popular">
                 <a href="#">Phổ biến</a>
@@ -108,56 +108,6 @@ export default defineComponent({
       width: 100%;
     }
 
-    .box-slider {
-      margin: 1rem -8px;
-    }
-    .carousel__item {
-      padding: 0 8px;
-
-      .box-img {
-        height: 175px;
-        overflow: hidden;
-        border-radius: 12px;
-        
-        img {
-          width: 100%;
-        }
-      }
-    }
-
-    .selected-filter-menu {
-      .ant-menu-overflow-item {
-        padding: 8 !important;
-
-      }
-
-      .ant-menu-item {
-        padding: 0 8px !important;
-        &::after {
-          border: none !important;
-        }
-      }
-      .ant-menu-title-content {
-        font-weight: 500;
-        font-size: 16px;
-      }
-      .ant-menu-horizontal > .ant-menu-item-selected::after {
-        width: 50px;
-        height: 4px;
-        background: #1890ff;
-        border-radius: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .ant-menu-horizontal > .ant-menu-item:hover::after {
-        width: 50px;
-        height: 4px;
-        background: #1890ff;
-        border-radius: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
+    
   }
 </style>

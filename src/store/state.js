@@ -2,6 +2,10 @@ export default {
     collapsed: false,
     themed: 'dark',
     selectedKeys: '',
+    amountProduct: 1,
+    totalProducts: 10,
+    disablePlus: false,
+    disableMinus: false,
     visibleChangeAddress: false,
     products: {
         columns: [

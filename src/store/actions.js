@@ -5,6 +5,49 @@ export default {
     changeThemed({commit, state}) {
         commit('setThemed', state.themed === 'dark' ? 'light' : 'dark')
     },
+    changeAmount({commit, state, dispatch}, e) {
+        var value = Number(e.target.value)
+
+        if(value > 0 && value <= state.totalProducts) {
+            commit('setAmountProduct', value)
+        } else {
+            commit('setAmountProduct', 1)
+            e.target.value = 1
+
+            if(value > state.totalProducts) {
+                commit('setAmountProduct', state.totalProducts)
+                e.target.value = state.totalProducts
+            }
+        }
+
+        dispatch('checkAmount')
+    },
+    minusAmount({commit, state, dispatch}) {
+        if(state.amountProduct > 1) {
+            commit('setAmountProduct', state.amountProduct-1)
+        }
+
+        dispatch('checkAmount')
+    },
+    plusAmount({commit, state, dispatch}) {
+        if(state.amountProduct < state.totalProducts) {
+            commit('setAmountProduct', state.amountProduct+1)
+        }
+        dispatch('checkAmount')
+    },
+    checkAmount({commit, state}) {
+        if(state.amountProduct === 1) {
+            commit('setDisableMinus', true)
+        } else {
+            commit('setDisableMinus', false)
+        }
+
+        if(state.amountProduct === state.totalProducts) {
+            commit('setDisablePlus', true)
+        } else {
+            commit('setDisablePlus', false)
+        }
+    },
     getDataSourceProducts({commit, state}) {
         var dataSource = [
             {

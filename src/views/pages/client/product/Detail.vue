@@ -57,7 +57,7 @@
   
                 <div class="amount">
                   <div class="minus" @click="minusAmount" :class="{disableBtnAmount: disableMinus}"><MinusOutlined /></div>
-                  <input type="text" :value="amount" @change="changeAmount">
+                  <input type="text" v-model="amountProduct" @change="changeAmount">
                   <div class="plus" @click="plusAmount" :class="{disableBtnAmount: disablePlus}"><PlusOutlined /></div>
                 </div>
               </div>
@@ -79,22 +79,22 @@
                   <div class="box-avatar">
                     <img src="/src/assets/images/shop/avatar.png" alt="">
                   </div>
-                  <h2 class="name-shop">
+                  <h4 class="name-shop text-ellipsis">
                     Tiki Tranding
-                  </h2>
+                  </h4>
                 </div>
                 <div class="shop-slider">
                   <a-row :gutter="[8,8]">
                     <a-col :span="12">
-                      <a-button type="primary" ghost class="w-100">
-                        <router-link :to="{name: 'shop'}">
-                          <ShopOutlined />
-                          Xem shop
-                        </router-link>
-                      </a-button>
+                      <router-link :to="{name: 'shop'}">
+                        <a-button type="primary" ghost class="w-100 d-flex align-items-center" >
+                            <ShopOutlined />
+                            Xem shop
+                        </a-button>
+                    </router-link>
                     </a-col>
                     <a-col :span="12">
-                      <a-button type="primary" ghost class="w-100">
+                      <a-button type="primary" ghost class="w-100 d-flex align-items-center">
                         <PlusOutlined />
                         Theo dõi
                       </a-button>
@@ -139,10 +139,6 @@ export default {
   },
   data() {
     return {
-      amount: 1,
-      disablePlus: false,
-      amountProduct: 10,
-      disableMinus: false,
       currentSlide: 0,
       images: [
         'product-10.jpg',
@@ -162,52 +158,15 @@ export default {
     ShopOutlined,
     ChangeAddress
   },
+  computed: {
+    ...mapGetters(['amountProduct', 'disablePlus', 'disableMinus'])
+  },
   methods: {
-    changeAmount(e) {
-      if(e.target.value > 0 && e.target.value <= this.amountProduct) {
-        this.amount = e.target.value
-      } else {
-        if(e.target.value <= 0) {
-          this.amount = 1
-          e.target.value = 1
-        }
-
-        if(e.target.value > this.amountProduct) {
-          this.amount = this.amountProduct
-          e.target.value = this.amountProduct
-        }
-      }
-    },
-    minusAmount() {
-      if(this.amount > 1) {
-        this.amount--
-      }
-
-      this.checkAmount()
-    },
-    plusAmount() {
-      if(this.amount < this.amountProduct) {
-        this.amount++
-      }
-      this.checkAmount()
-    },
-    checkAmount() {
-      if(this.amount == 1) {
-        this.disableMinus = true
-      } else {
-        this.disableMinus = false
-      }
-
-      if(this.amount == this.amountProduct) {
-        this.disablePlus = true
-      } else {
-        this.disablePlus = false
-      }
-    },
-    slideTo(val) {
-      this.currentSlide = val
-    },
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount']),
     ...mapMutations(['setVisibleChangeAddress']),
+    slideTo(val) {
+        this.currentSlide = val
+    },
   }
 }
 </script>
@@ -426,6 +385,8 @@ export default {
 
         .name-shop {
           margin-bottom: 0;
+          display: block;
+          width: calc(100% - 53px);
         }
       }
 

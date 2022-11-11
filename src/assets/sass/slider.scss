@@ -120,3 +120,21 @@
     }
   }
 }
+
+.box-slider {
+  margin: 1rem -8px;
+  
+  .carousel__item {
+    padding: 0 8px;
+  
+    .box-img {
+      height: 175px;
+      overflow: hidden;
+      border-radius: 12px;
+      
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
