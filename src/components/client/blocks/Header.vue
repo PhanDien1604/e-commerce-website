@@ -3,9 +3,11 @@
     <div class="container py-3">
       <a-row justify="space-between">
         <a-col>
-          <div class="box-logo">
-            <img src="@/assets/images/logo.png" alt="">
-          </div>
+          <router-link :to="{name: 'home'}">
+            <div class="box-logo">
+              <img src="@/assets/images/logo.png" alt="">
+            </div>
+          </router-link>
         </a-col>
         <a-col :span="14">
           <div class="box-search">
@@ -30,13 +32,15 @@
           </div>
         </a-col>
         <a-col>
-          <div class="box-cart">
-            <div class="position-relative">
-              <img class="cart-icon" src="@/assets/images/icon-cart.png">
-              <span class="badge">5</span>
+          <router-link :to="{name: 'cart'}">
+            <div class="box-cart">
+              <div class="position-relative">
+                <img class="cart-icon" src="@/assets/images/icon-cart.png">
+                <span class="badge">5</span>
+              </div>
+              <span>Giỏ hàng</span>
             </div>
-            <span>Giỏ hàng</span>
-          </div>
+          </router-link>
         </a-col>
       </a-row>
     </div>

@@ -64,7 +64,6 @@ export default {
 </script>
 <style lang="scss">
   .box-category {
-    margin-top: 1.5rem;
     .ant-card-cover {
       width: 60px;
       height: 60px;

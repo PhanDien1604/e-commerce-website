@@ -92,12 +92,16 @@ const router = createRouter({
           path: '/group/product',
           name: 'groupProduct',
           component: () => import('../views/pages/client/product/Group.vue')
-        }
-        ,
+        },
         {
           path: '/shop',
           name: 'shop',
           component: () => import('../views/pages/client/Shop.vue')
+        },
+        {
+          path: '/cart',
+          name: 'cart',
+          component: () => import('../views/pages/client/Cart.vue')
         }
       ]
     }

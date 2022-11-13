@@ -22,30 +22,40 @@ export default {
 
         dispatch('checkAmount')
     },
-    minusAmount({commit, state, dispatch}) {
-        if(state.amountProduct > 1) {
-            commit('setAmountProduct', state.amountProduct-1)
+    minusAmount({commit, state, dispatch}, e) {
+        let amount = e.target.closest('.amount').querySelector('input')
+        var value = Number(amount.value)
+
+        if(value > 1) {
+            amount.value = value - 1
         }
 
-        dispatch('checkAmount')
+        dispatch('checkAmount', e)
     },
-    plusAmount({commit, state, dispatch}) {
-        if(state.amountProduct < state.totalProducts) {
-            commit('setAmountProduct', state.amountProduct+1)
+    plusAmount({commit, state, dispatch}, e) {
+        let amount = e.target.closest('.amount').querySelector('input')
+        var value = Number(amount.value)
+
+        if(value < state.totalProducts) {
+            amount.value = value + 1
         }
-        dispatch('checkAmount')
+        dispatch('checkAmount', e)
     },
-    checkAmount({commit, state}) {
-        if(state.amountProduct === 1) {
-            commit('setDisableMinus', true)
+    checkAmount({commit, state}, e) {
+        let amount = e.target.closest('.amount').querySelector('input')
+        var value = Number(amount.value)
+        console.log()
+
+        if(value === 1) {
+            e.target.closest('.amount').querySelector('.minus').classList.add('disable')
         } else {
-            commit('setDisableMinus', false)
+            e.target.closest('.amount').querySelector('.minus').classList.remove('disable')
         }
 
-        if(state.amountProduct === state.totalProducts) {
-            commit('setDisablePlus', true)
+        if(value === state.totalProducts) {
+            e.target.closest('.amount').querySelector('.plus').classList.add('disable')
         } else {
-            commit('setDisablePlus', false)
+            e.target.closest('.amount').querySelector('.plus').classList.remove('disable')
         }
     },
     getDataSourceProducts({commit, state}) {

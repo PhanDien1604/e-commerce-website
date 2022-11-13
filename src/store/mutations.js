@@ -8,9 +8,6 @@ export default {
     setSelectedKeys(state, selectedKeys) {
         state.selectedKeys = selectedKeys
     },
-    setAmountProduct(state, amountProduct) {
-        state.amountProduct = amountProduct
-    },
     setTotalProduct(state, totalProducts) {
         state.totalProducts = totalProducts
     },

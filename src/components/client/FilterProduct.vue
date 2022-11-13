@@ -1,7 +1,7 @@
 <template lang="">
   <div class="filter-product bg-light">
     <div class="filter-item">
-      <h3>Địa chỉ nhận hàng</h3>
+      <h5>Địa chỉ nhận hàng</h5>
       <span class="text-ellipsis address">Mộ Lao, Hà Đông, Hà Nội</span> <br>
       <div class="change-address" @click="setVisibleChangeAddress(true)">Đổi địa chỉ</div>
       <ChangeAddress />
@@ -10,7 +10,7 @@
     <div class="custom-hr"></div>
 
     <div class="filter-item">
-      <h3>Dịch vụ</h3>
+      <h5>Dịch vụ</h5>
       <div class="list-checkbox">
         <a-checkbox><img src="/src/assets/images/icons/icon-now.png" class="icon-service"> <br>Giao Siêu Tốc 2H</a-checkbox> <br>
         <a-checkbox><img src="/src/assets/images/icons/icon-astra.png" class="icon-service"> <br>Thưởng Thêm Astra</a-checkbox> <br>
@@ -21,7 +21,7 @@
     <div class="custom-hr"></div>
 
     <div class="filter-item">
-      <h3>Nơi bán</h3>
+      <h5>Nơi bán</h5>
       <div class="list-checkbox">
         <a-checkbox>Hồ Chí Minh</a-checkbox> <br>
         <a-checkbox>Hà Nội</a-checkbox> <br>
@@ -34,7 +34,7 @@
     <div class="custom-hr"></div>
 
     <div class="filter-item">
-      <h3>Nơi bán</h3>
+      <h5>Giá</h5>
       <div class="list-checkbox">
         <span class="checked-price">Dưới 2.500.000</span>
         <span class="checked-price">2.500.000 -> 6.000.000</span>
@@ -42,8 +42,8 @@
         <span class="checked-price">Trên 24.500.000</span>
       </div>
 
-      <div class="select-range-price mt-1">
-        <h4>Chọn khoảng giá</h4>
+      <div class="select-range-price mt-2">
+        <h5>Chọn khoảng giá</h5>
 
         <div class="box-input">
           <input type="text" :value="priceFrom" placeholder="Giá từ" @change="changePriceFrom">

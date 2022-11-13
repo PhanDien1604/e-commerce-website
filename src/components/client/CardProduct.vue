@@ -29,18 +29,19 @@ export default {
 }
 </script>
 <style lang="scss">
-.price {
-  color: red;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.promotion {
-  font-size: 12px;
-}
 .card-product {
   padding: 1px;
 
+  .price {
+    color: red;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  
+  .promotion {
+    font-size: 12px;
+  }
+  
   .ant-card-cover {
     height: 222px;
     overflow: hidden;

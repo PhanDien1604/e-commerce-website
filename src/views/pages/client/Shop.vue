@@ -1,6 +1,6 @@
 <template lang="">
   <div class="box-shop">
-    <div class="shop-header">
+    <div class="shop-header-detail">
       <a-row type="flex" justify="left">
         <a-col :span="24" class="d-flex align-items-center">
           <div class="box-avatar">
@@ -162,7 +162,7 @@ export default defineComponent ({
 })
 </script>
 <style lang="scss">
-  .shop-header {
+  .shop-header-detail {
     padding: 1rem;
     background: url('/src/assets/images/shop/banner-shop.jpg');
     background-size: cover;
@@ -243,6 +243,9 @@ export default defineComponent ({
       }
       .carousel__item {
         width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
       }
     }
 

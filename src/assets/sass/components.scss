@@ -1,0 +1,38 @@
+.amount {
+  display: flex;
+
+  .plus, .minus {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .minus {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .disable {
+    cursor: default;
+    color: #bbbbbb;
+  }
+
+  .plus {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  input {
+    width: 50px;
+    height: 34px;
+    border: none;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: center;
+    outline: none;
+  }
+}

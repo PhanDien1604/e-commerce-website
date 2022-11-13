@@ -29,9 +29,9 @@
           </Carousel>
         </a-col>
         <a-col :span="15" class="box-content">
-          <h1 class="title">
+          <h3 class="title">
             Loa Nghe Nhạc Bluetooth Hỗ Trợ Khe Cắm Thẻ Nhớ, USB - Hàng Chính Hãng
-          </h1>
+          </h3>
   
           <a-row>
             <a-col :span="16" class="left">
@@ -56,9 +56,9 @@
                 <h3>Số lượng</h3>
   
                 <div class="amount">
-                  <div class="minus" @click="minusAmount" :class="{disableBtnAmount: disableMinus}"><MinusOutlined /></div>
+                  <div class="minus" @click="minusAmount"><MinusOutlined /></div>
                   <input type="text" v-model="amountProduct" @change="changeAmount">
-                  <div class="plus" @click="plusAmount" :class="{disableBtnAmount: disablePlus}"><PlusOutlined /></div>
+                  <div class="plus" @click="plusAmount"><PlusOutlined /></div>
                 </div>
               </div>
   
@@ -113,13 +113,13 @@
     </div>
     
     <div class="similar-product bg-light mt-3 p-3 rounded">
-      <h2>Sản phẩm tương tự</h2>
+      <h4>Sản phẩm tương tự</h4>
 
       <SimilarProduct />
     </div>
 
     <div class="describe-product bg-light mt-3 p-3 rounded">
-      <h2>Mô tả sản phẩm</h2>
+      <h4>Mô tả sản phẩm</h4>
 
       <DescribeProduct />
     </div>
@@ -135,7 +135,6 @@ import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   created() {
-    this.checkAmount()
   },
   data() {
     return {
@@ -144,7 +143,8 @@ export default {
         'product-10.jpg',
         'product-2.jpg',
         'product-3.jpg'
-      ]
+      ],
+      amountProduct: 1
     }
   },
   components: {
@@ -159,7 +159,7 @@ export default {
     ChangeAddress
   },
   computed: {
-    ...mapGetters(['amountProduct', 'disablePlus', 'disableMinus'])
+    ...mapGetters(['disablePlus', 'disableMinus'])
   },
   methods: {
     ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount']),
@@ -296,44 +296,6 @@ export default {
         .box-amount {
           h3 {
             font-size: 18px;
-          }
-          .amount {
-            display: flex;
-
-            .plus, .minus {
-              width: 34px;
-              height: 34px;
-              border: 1px solid #f1f1f1;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-            }
-
-            .minus {
-              border-top-left-radius: 4px;
-              border-bottom-left-radius: 4px;
-            }
-
-            .disableBtnAmount {
-              cursor: default;
-              color: #bbbbbb;
-            }
-
-            .plus {
-              border-top-right-radius: 4px;
-              border-bottom-right-radius: 4px;
-            }
-            
-            input {
-              width: 50px;
-              height: 34px;
-              border: none;
-              border-top: 1px solid #f1f1f1;
-              border-bottom: 1px solid #f1f1f1;
-              text-align: center;
-              outline: none;
-            }
           }
         }
 
