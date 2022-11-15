@@ -8,4 +8,5 @@ export default {
     visibleChangeAddress: state => state.visibleChangeAddress,
     products: state => state.products,
     product: state => state.product,
+    cart: state => state.cart,
 }

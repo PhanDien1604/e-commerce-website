@@ -116,5 +116,65 @@ export default {
             }
         ]
         commit('setDataSourceProducts', dataSource)
+    },
+    onCheckAll({commit, state, dispatch}) {
+        var statusClick = false
+        state.cart.shops.forEach(shop => {
+            shop.checked = state.cart.checked
+            dispatch('onCheckAllShop', {shop, statusClick})
+        });
+     
+    },
+    onCheckAllShop({commit, state, dispatch}, {shop, statusClick}) {
+        if(!shop.checked) {
+            state.cart.countShop--
+        } else {
+            state.cart.countShop++
+        }
+        if(statusClick && state.cart.countShop === state.cart.shops.length) {
+            state.cart.checked = true
+        }
+
+        if(statusClick && state.cart.countShop != state.cart.shops.length) {
+            state.cart.checked = false
+        }
+        var statusCLickItem = false
+        
+        shop.products.forEach(product => {
+            product.checked = shop.checked
+            dispatch('onCheckAllItem', {shop, product, statusCLickItem})
+        });
+
+        
+    },
+    onCheckAllItem({commit, state}, {shop, product, statusCLickItem}) {
+        if(!product.checked) {
+            shop.countProduct--
+        } else {
+            if(!statusCLickItem) {
+                shop.countProduct = shop.products.length
+            } else {
+                shop.countProduct++
+            }
+        }
+
+        if(statusCLickItem && shop.countProduct === shop.products.length) {
+            if(!shop.checked) {
+                state.cart.countShop++
+            }
+            if(state.cart.countShop === state.cart.shops.length) {
+                state.cart.checked = true
+            }
+            shop.checked = true
+        }
+        if(statusCLickItem && shop.countProduct !== shop.products.length) {
+            if(shop.checked) {
+                state.cart.countShop--
+            }
+            if(state.cart.countShop !== state.cart.shops.length) {
+                state.cart.checked = false
+            }
+            shop.checked = false
+        }
     }
 }
