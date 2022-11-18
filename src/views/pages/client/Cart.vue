@@ -69,9 +69,9 @@
                     <a-col :span="4">
                       <div class="d-flex align-items-center h-100">
                         <div class="amount">
-                          <div class="minus" @click="minusAmount"><MinusOutlined /></div>
-                          <input type="text" v-model="product.amount" @change="changeAmount">
-                          <div class="plus" @click="plusAmount"><PlusOutlined /></div>
+                          <div class="minus" @click="minusAmount(product)" :class="{disable: product.minus}"><MinusOutlined /></div>
+                          <input type="text" v-model="product.amount" @change="changeAmount(product)">
+                          <div class="plus" @click="plusAmount(product)" :class="{disable: product.plus}"><PlusOutlined /></div>
                         </div>
                       </div>
                     </a-col>
@@ -101,15 +101,15 @@
         <div class="box-buy mt-3 bg-light rounded p-3 font-size-16">
           <div class="d-flex justify-content-between">
             <div>Tạm tính</div>
-            <div>0<span>đ</span></div>
+            <div>{{ cart.totalPrice }}<span>đ</span></div>
           </div>
           <div class="d-flex justify-content-between mt-2">
-            <div>Giảo giá</div>
+            <div>Giảm giá</div>
             <div>0<span>đ</span></div>
           </div>
           <div class="d-flex justify-content-between mt-2">
             <div class="fw-bold">Tổng tiền</div>
-            <div class="fw-bold">0<span>đ</span></div>
+            <div class="fw-bold">{{ cart.totalPrice }}<span>đ</span></div>
 
             <div class="d-none">Vui lòng chọn sản phẩm</div>
           </div>
@@ -129,6 +129,9 @@ import PromotionVue from '@/components/client/Promotion.vue'
 import AddressVue from '@/components/client/Address.vue'
 
 export default {
+  created() {
+    this.getCart()
+  },
   data() {
     return {
       statusClick: true,
@@ -144,10 +147,10 @@ export default {
     AddressVue
   },
   computed: {
-    ...mapGetters(['amountProduct', 'disablePlus', 'disableMinus', 'cart'])
+    ...mapGetters(['amountProduct', 'cart'])
   },
   methods: {
-    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem']),
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem', 'getCart']),
     ...mapMutations(['setVisibleChangeAddress']),
   }
 }

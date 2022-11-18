@@ -30,14 +30,14 @@
         </a-col>
         <a-col :span="15" class="box-content">
           <h3 class="title">
-            Loa Nghe Nhạc Bluetooth Hỗ Trợ Khe Cắm Thẻ Nhớ, USB - Hàng Chính Hãng
+            {{ product.name }}
           </h3>
   
           <a-row>
             <a-col :span="16" class="left">
               <div class="box-price">
                 <span class="price">
-                  274.000 <span>₫</span>
+                  {{ product.price }} <span>₫</span>
                   <span class="price-discount">500.000 <span>₫</span></span>
                   <span class="price-discount--percent">-45%</span>
                 </span>
@@ -56,9 +56,9 @@
                 <h3>Số lượng</h3>
   
                 <div class="amount">
-                  <div class="minus" @click="minusAmount"><MinusOutlined /></div>
-                  <input type="text" v-model="amountProduct" @change="changeAmount">
-                  <div class="plus" @click="plusAmount"><PlusOutlined /></div>
+                  <div class="minus" @click="minusAmount(product)" :class="{disable: product.minus}"><MinusOutlined /></div>
+                  <input type="text" v-model="product.amount" @change="changeAmount(product)">
+                  <div class="plus" @click="plusAmount(product)" :class="{disable: product.plus}"><PlusOutlined /></div>
                 </div>
               </div>
   
@@ -135,6 +135,7 @@ import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   created() {
+    this.getProduct()
   },
   data() {
     return {
@@ -159,10 +160,10 @@ export default {
     ChangeAddress
   },
   computed: {
-    ...mapGetters(['disablePlus', 'disableMinus'])
+    ...mapGetters(['disablePlus', 'disableMinus', 'product'])
   },
   methods: {
-    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount']),
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'getProduct']),
     ...mapMutations(['setVisibleChangeAddress']),
     slideTo(val) {
         this.currentSlide = val

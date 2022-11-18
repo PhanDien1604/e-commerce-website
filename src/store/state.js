@@ -71,48 +71,5 @@ export default {
         dataSource: [],
     },
     product: {},
-    cart: {
-      shops: [
-        {
-          products: [
-            {
-              name: 'Tên sản phẩm',
-              price: 25000000,
-              amount: 4,
-              checked: false
-            },
-            {
-              name: 'Tên sản phẩm',
-              price: 25000000,
-              amount: 2,
-              checked: false
-            },
-          ],
-          countProduct: 0,
-          checked: false
-        },
-        {
-          products: [
-            {
-              name: 'Tên sản phẩm',
-              price: 25000000,
-              amount: 4,
-              checked: false
-            },
-            {
-              name: 'Tên sản phẩm',
-              price: 25000000,
-              amount: 2,
-              checked: false
-            },
-          ],
-          countProduct: 0,
-          checked: false
-        }
-      ],
-      totalProduct: 4,
-      checked: false,
-      countShop: 0,
-      countProduct: 0
-    }
+    cart: {}
 }

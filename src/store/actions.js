@@ -5,57 +5,48 @@ export default {
     changeThemed({commit, state}) {
         commit('setThemed', state.themed === 'dark' ? 'light' : 'dark')
     },
-    changeAmount({commit, state, dispatch}, e) {
-        var value = Number(e.target.value)
-
-        if(value > 0 && value <= state.totalProducts) {
-            commit('setAmountProduct', value)
+    changeAmount({commit, state, dispatch}, product) {
+        if(product.amount > 0 && product.amount <= product.totalProduct) {
         } else {
-            commit('setAmountProduct', 1)
-            e.target.value = 1
-
-            if(value > state.totalProducts) {
-                commit('setAmountProduct', state.totalProducts)
-                e.target.value = state.totalProducts
+            if(product.amount > product.totalProduct) {
+                product.amount = product.totalProduct
+            } else {
+                product.amount = 1
             }
         }
-
-        dispatch('checkAmount')
+        dispatch('checkAmount', product)
     },
-    minusAmount({commit, state, dispatch}, e) {
-        let amount = e.target.closest('.amount').querySelector('input')
-        var value = Number(amount.value)
-
-        if(value > 1) {
-            amount.value = value - 1
+    minusAmount({commit, state, dispatch}, product) {
+        if(product.amount > 1) {
+            product.amount--
+            if(product.checked) {
+                state.cart.totalPrice -= product.price
+            }
         }
-
-        dispatch('checkAmount', e)
+        dispatch('checkAmount', product)
     },
-    plusAmount({commit, state, dispatch}, e) {
-        let amount = e.target.closest('.amount').querySelector('input')
-        var value = Number(amount.value)
+    plusAmount({commit, state, dispatch}, product) {
+        console.log(product)
 
-        if(value < state.totalProducts) {
-            amount.value = value + 1
+        if(product.amount < product.totalProduct) {
+            product.amount++
+            if(product.checked) {
+                state.cart.totalPrice += product.price
+            }
         }
-        dispatch('checkAmount', e)
+        dispatch('checkAmount', product)
     },
-    checkAmount({commit, state}, e) {
-        let amount = e.target.closest('.amount').querySelector('input')
-        var value = Number(amount.value)
-        console.log()
-
-        if(value === 1) {
-            e.target.closest('.amount').querySelector('.minus').classList.add('disable')
+    checkAmount({commit, state}, product) {
+        if(product.amount === 1) {
+            product.minus = true
         } else {
-            e.target.closest('.amount').querySelector('.minus').classList.remove('disable')
+            product.minus = false
         }
 
-        if(value === state.totalProducts) {
-            e.target.closest('.amount').querySelector('.plus').classList.add('disable')
+        if(product.amount === product.totalProduct) {
+            product.plus = true
         } else {
-            e.target.closest('.amount').querySelector('.plus').classList.remove('disable')
+            product.plus = false
         }
     },
     getDataSourceProducts({commit, state}) {
@@ -150,12 +141,15 @@ export default {
     onCheckAllItem({commit, state}, {shop, product, statusCLickItem}) {
         if(!product.checked) {
             shop.countProduct--
+            state.cart.totalPrice -= product.amount * product.price
         } else {
             if(!statusCLickItem) {
                 shop.countProduct = shop.products.length
             } else {
                 shop.countProduct++
             }
+
+            state.cart.totalPrice += product.amount * product.price
         }
 
         if(statusCLickItem && shop.countProduct === shop.products.length) {
@@ -176,5 +170,77 @@ export default {
             }
             shop.checked = false
         }
+    },
+    getCart({state}) {
+        var data = {
+            shops: [
+                {
+                  products: [
+                    {
+                      name: 'Tên sản phẩm',
+                      price: 25000000,
+                      amount: 4,
+                      totalProduct: 10,
+                      checked: false,
+                      minus: false,
+                      plus: false
+                    },
+                    {
+                      name: 'Tên sản phẩm',
+                      price: 25000000,
+                      amount: 2,
+                      totalProduct: 10,
+                      checked: false,
+                      minus: false,
+                      plus: false
+                    },
+                  ],
+                  countProduct: 0,
+                  checked: false,
+                },
+                {
+                  products: [
+                    {
+                      name: 'Tên sản phẩm',
+                      price: 25000000,
+                      amount: 4,
+                      totalProduct: 10,
+                      checked: false,
+                      minus: false,
+                      plus: false
+                    },
+                    {
+                      name: 'Tên sản phẩm',
+                      price: 25000000,
+                      amount: 2,
+                      totalProduct: 10,
+                      checked: false,
+                      minus: false,
+                      plus: false
+                    },
+                  ],
+                  countProduct: 0,
+                  checked: false
+                }
+              ],
+              totalProduct: 4,
+              checked: false,
+              countShop: 0,
+              countProduct: 0,
+              totalPrice: 0
+            }
+        state.cart = data
+    },
+    getProduct({state}) {
+        var data = {
+            name: 'Tên sản phẩm',
+            price: 25000000,
+            amount: 4,
+            totalProduct: 10,
+            minus: false,
+            plus: false
+        }
+
+        state.product = data
     }
 }
