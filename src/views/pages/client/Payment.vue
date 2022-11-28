@@ -1,17 +1,10 @@
 <template lang="">
   <div class="box-payment mt-4">
-    <h4>Đơn hàng</h4>
+    <h4>THANH TOÁN</h4>
 
-    <a-steps :current="current" size="medium" class="mt-4">
-      <a-step title="Chờ xác nhận" @click="setStatus(0)" />
-      <a-step title="Chờ lấy hàng"  @click="setStatus(1)"/>
-      <a-step title="Đang giao"  @click="setStatus(2)"/>
-      <a-step title="Giao hàng thành công"  @click="setStatus(3)"/>
-    </a-steps>
-
-    <a-row :gutter="[16, 16]" class="bg-light rounded-3 p-4 mt-4">
+    <a-row :gutter="[16, 16]">
       <a-col :span="18">
-        <div class="cart">
+        <div class="cart bg-light rounded-3 p-4">
           <h5>Sản phẩm</h5>
 
           <div class="cart-shop p-4 border rounded-3 mb-5 mt-5" v-for="(shop, i) in cart.shops" :key="i">
@@ -57,22 +50,34 @@
             </a-row>
           </div>
         </div>
+
+        <div class="bg-light">
+          <SelectPaymentVue />
+        </div>
       </a-col>
-      <a-col :span="6" class="ps-3">
-        <h5>Thông tin</h5>
+      <a-col :span="6">
+        <AddressVue />
+        <PromotionVue class="mt-3" />
 
-        <div class="font-size-18 mt-4">
-          <span class="fw-bold">Địa điểm nhận hàng: </span><span>jasdgjasdgjasdádasdasdasd</span> <br>
-          <span class="fw-bold">Hình thức thanh toán </span><span>Thanh toán khi nhận hàng</span>
-        </div>
+        <div class="box-buy mt-3 bg-light rounded p-3 font-size-16">
+          <div class="d-flex justify-content-between">
+            <div>Tạm tính</div>
+            <div>{{ cart.totalPrice }}<span>đ</span></div>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <div>Giảm giá</div>
+            <div>0<span>đ</span></div>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <div class="fw-bold">Tổng tiền</div>
+            <div class="fw-bold">{{ cart.totalPrice }}<span>đ</span></div>
 
-        <div class="d-flex justify-content-between mt-3 font-size-18">
-          <div class="fw-bold">Giảm giá</div>
-          <div class="fw-bold">{{ cart.totalPrice }}<span>đ</span></div>
-        </div>
-        <div class="d-flex justify-content-between font-size-18">
-          <div class="fw-bold">Tổng tiền</div>
-          <div class="fw-bold">{{ cart.totalPrice }}<span>đ</span></div>
+            <div class="d-none">Vui lòng chọn sản phẩm</div>
+          </div>
+
+          <a-button type="primary" class="w-100 mt-3 btn-buy">
+            Đặt hàng
+          </a-button>
         </div>
       </a-col>
     </a-row>
@@ -92,8 +97,7 @@ export default {
   data() {
     return {
       statusClick: true,
-      statusCLickItem: true,
-      current: 0,
+      statusCLickItem: true
     }
   },
   components: {
@@ -111,9 +115,6 @@ export default {
   methods: {
     ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem', 'getCart']),
     ...mapMutations(['setVisibleChangeAddress']),
-    setStatus(value) {
-      this.current = value
-    }
   }
 }
 </script>

@@ -115,7 +115,9 @@
           </div>
 
           <a-button type="primary" class="w-100 mt-3 btn-buy">
-            Mua hàng
+            <router-link :to="{name: 'payment'}">
+              Mua hàng
+            </router-link>
           </a-button>
         </div>
       </a-col>

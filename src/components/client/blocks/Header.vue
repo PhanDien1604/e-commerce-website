@@ -21,15 +21,31 @@
           </div>
         </a-col>
         <a-col :span="3">
-          <div class="box-account text-ellipsis">
-            <img class="profile-icon" src="@/assets/images/icon-user.png">
-            <div class="user-info">
-              <span class="title-account">Tài khoản</span>
-              <div class="dropdown">
-                <div class="user-name">Phan Điện</div>
+          <a-dropdown>
+            <div class="box-account text-ellipsis">
+              <img class="profile-icon" src="@/assets/images/icon-user.png">
+              <div class="user-info">
+                <span class="title-account">Tài khoản</span>
+                <div class="dropdown">
+                  <div class="user-name">Phan Điện</div>
+                </div>
               </div>
             </div>
-          </div>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item>
+                  <router-link :to="{name: 'profile'}">
+                    Hồ sơ các nhân
+                  </router-link>
+                </a-menu-item>
+                <a-menu-item>
+                  <router-link :to="{name: 'order'}">
+                    Đơn hàng
+                  </router-link>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
         </a-col>
         <a-col>
           <router-link :to="{name: 'cart'}">
