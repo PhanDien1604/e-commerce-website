@@ -22,7 +22,7 @@ export default {
         if(product.amount > 1) {
             product.amount--
             if(product.checked) {
-                state.cart.totalPrice -= product.price
+                state.cart[0].totalPrice -= product.price
             }
         }
         dispatch('checkAmount', product)
@@ -31,7 +31,7 @@ export default {
         if(product.amount < product.quantity) {
             product.amount++
             if(product.checked) {
-                state.cart.totalPrice += product.price
+                state.cart[0].totalPrice += product.price
             }
         }
         dispatch('checkAmount', product)
@@ -183,9 +183,30 @@ export default {
         state.cart[0] = cart
         return true;
     },
-    async search({state}, keyword) {
-        await api.search({keyword})
-        console.log(data)
+    async search({commit}, keyword) {
+        var {data} = await api.search(keyword)
+        commit('setDataSourceProducts', data)
         return true;
-    }
+    },
+    async getOrder({state}, id) {
+        var {data} = await api.getOrder(id)
+        state.order = data
+        return true;
+    },
+    async addShipment({state}, data) {
+        var {data} = await api.addShipment(data)
+        return data;
+    },
+    async addPayment({state}, data) {
+        var {data} = await api.addPayment(data)
+        return data;
+    },
+    async addOrder({state}, data) {
+        var {data} = await api.addOrder(data)
+        return data;
+    },
+    async addCart({state}, data) {
+        var {data} = await api.addCart(data)
+        return data;
+    },
 }

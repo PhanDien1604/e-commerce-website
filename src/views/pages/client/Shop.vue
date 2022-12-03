@@ -8,7 +8,7 @@
           </div>
           <div class="d-flex flex-column">
             <h2 class="name-shop">
-              Dum Bum Store
+              {{ shop.shop }}
             </h2>
             
             <a-row :gutter="[8, 8]">
@@ -61,7 +61,7 @@
         </a-col>
       </a-row>
     </div>
-    <div class="category-shop box-category">
+    <!-- <div class="category-shop box-category">
       <Carousel :itemsToShow="10" snapAlign="start">
         <Slide v-for="(category, i) in category" :key="i">
           <div class="carousel__item">{{ category }}</div>
@@ -71,7 +71,7 @@
           <Navigation />
         </template>
       </Carousel>
-    </div>
+    </div> -->
     <div class="box-slider">
       <Carousel snapAlign="start" :itemsToShow="2" :wrapAround="true" :autoplay="5000">
         <Slide v-for="(banner, i) in banners" :key="i">
@@ -103,7 +103,7 @@
 import {PlusOutlined, ShopOutlined} from '@ant-design/icons-vue';
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 import CardProduct from '@/components/client/CardProduct.vue'
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapGetters, mapActions, mapMutations, mapState } from 'vuex';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent ({
@@ -144,14 +144,16 @@ export default defineComponent ({
     Navigation,
     CardProduct
   },
-  created() {
+  async created() {
     this.getProductByShopId(this.$route.params.id)
+    await this.getShop(this.$route.params.id)
   },
   computed: {
-    ...mapGetters(['products'])
+    ...mapGetters(['products']),
+    ...mapState(['shop'])
   },
   methods: {
-    ...mapActions(['getProductByShopId'])
+    ...mapActions(['getProductByShopId', 'getShop'])
   },
   setup() {
     const current = ref(['shop']);

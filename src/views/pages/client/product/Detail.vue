@@ -68,7 +68,7 @@
                     <a-button type="primary" class="btn-buy">Mua hàng</a-button>
                   </a-col>
                   <a-col :span="12">
-                    <a-button type="primary" class="btn-add-cart">Thêm vào giỏ hàng</a-button>
+                    <a-button type="primary" class="btn-add-cart" @click="addCartUser">Thêm vào giỏ hàng</a-button>
                   </a-col>
                 </a-row>
               </div>
@@ -166,11 +166,19 @@ export default {
     ...mapGetters(['disablePlus', 'disableMinus', 'product'])
   },
   methods: {
-    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'getProduct']),
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'getProduct', 'addCart']),
     ...mapMutations(['setVisibleChangeAddress']),
     slideTo(val) {
         this.currentSlide = val
     },
+    addCartUser() {
+      var product = {
+        product_id: Number(this.$route.params.id),
+        quantity: this.product.amount
+      }
+      console.log(product)
+      this.addCart(product)
+    }
   }
 }
 </script>

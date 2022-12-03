@@ -75,7 +75,7 @@
             <div class="d-none">Vui lòng chọn sản phẩm</div>
           </div>
 
-          <a-button type="primary" class="w-100 mt-3 btn-buy">
+          <a-button type="primary" class="w-100 mt-3 btn-buy" @click="buy">
             Đặt hàng
           </a-button>
         </div>
@@ -94,7 +94,6 @@ export default {
   async created() {
     this.shops = this.cart[0].shops
     var shops = []
-    var totalPrice = 0
     this.shops.forEach((shop) => {
       var products = shop.products.filter(product => product.checked === true);
       shop.products = products
@@ -133,8 +132,33 @@ export default {
     ...mapGetters(['amountProduct', 'cart'])
   },
   methods: {
-    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem']),
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem', 'addShipment', 'addPayment', 'addOrder']),
     ...mapMutations(['setVisibleChangeAddress']),
+    async buy() {
+      var dataShipment = {
+        note: "day la note",
+        cost: "12.7",
+        method: "",
+        address: "Ha noi"
+      }
+      var shipment = await this.addShipment(dataShipment)
+
+      var dataPayment = {
+          amount: "12.7",
+          card: "",
+          cvv: "",
+          method: "thanh toan khi nhan hang", 
+          shipment_id: shipment.id+''
+      }
+      var payment = await this.addPayment(dataPayment)
+      console.log(payment)
+
+      var dataOrder = {
+          listcartId: "1,2", 
+          payment_id: payment.id+''
+      }
+      await this.addOrder(dataOrder)
+    }
   }
 }
 </script>

@@ -75,5 +75,6 @@ export default {
     categorise: [],
     shop: [],
     userProfile: [],
-    orderPayment: {}
+    orderPayment: {},
+    order: {}
 }
