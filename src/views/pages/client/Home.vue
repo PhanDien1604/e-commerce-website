@@ -1,11 +1,11 @@
 <template>
   <div class="content">
     <Slider />
-    <Category />
+    <Category :categorise="categoriseList" />
     <Banner />
     <div class="list-product">
       <a-row>
-        <a-col :span="4" v-for="product in products.dataSource" :key="product" >
+        <a-col style="width: 20%" v-for="product in products.dataSource" :key="product" >
             <CardProduct :product="product" />
         </a-col>
       </a-row>
@@ -18,7 +18,7 @@ import CardProduct from '@/components/client/CardProduct.vue'
 import Category from '@/components/client/Category.vue'
 import Banner from '@/components/client/Banner.vue'
 
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapGetters, mapActions, mapMutations, mapState } from 'vuex';
 
 export default {
   components: {
@@ -27,14 +27,29 @@ export default {
     Category,
     Banner
   },
-  created() {
+  async created() {
     this.getDataSourceProducts()
+    await this.getCategorise()
+    for (let i = 0; i < this.categorise.length; i+=2) {
+      var categoriseTwo = []
+      categoriseTwo.push(this.categorise[i])
+      if(this.categorise[i+1]) {
+        categoriseTwo.push(this.categorise[i+1])
+      }
+      this.categoriseList.push(categoriseTwo)
+    }
+  },
+  data() {
+    return {
+      categoriseList: []
+    }
   },
   computed: {
-    ...mapGetters(['products'])
+    ...mapGetters(['products']),
+    ...mapState(['categorise'])
   },
   methods: {
-    ...mapActions(['getDataSourceProducts'])
+    ...mapActions(['getDataSourceProducts', 'getAllProducts', 'getCategorise'])
   }
 }
 </script>

@@ -1,19 +1,20 @@
 <template lang="">
   <div class="card-product">
-    <router-link :to="{name: 'detailProduct'}">
+    
+    <router-link :to="{name: 'detailProduct', params: {id: product.id} }">
       <a-card hoverable >
         <template #cover>
-          <img alt="example" :src="'/src/assets/images/products/' + product.image" />
+          <img alt="example" :src="'/src/assets/images/products/' + product.images[0].path" />
         </template>
         <a-card-meta>
           <template #title>
-              {{ product.name }}
+              {{ product.title }}
           </template>
           <template #description>
             <a-progress :percent="50" :show-info="false" />
             <span class="price">{{ product.price }} <span>₫</span> <span class="promotion">-5%</span></span>
             <div class="font-size-12 text-ellipsis-2 txt-promotion">
-              Nội dung tặng, Nội dung tặng, Nội dung tặng, Nội dung tặng Nội dung tặng, Nội dung tặng, Nội dung tặng, Nội dung tặng
+              {{ product.description }}
             </div>
           </template>
         </a-card-meta>

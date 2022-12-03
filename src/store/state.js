@@ -71,5 +71,9 @@ export default {
         dataSource: [],
     },
     product: {},
-    cart: {}
+    cart: {},
+    categorise: [],
+    shop: [],
+    userProfile: [],
+    orderPayment: {}
 }

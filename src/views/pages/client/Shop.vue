@@ -91,7 +91,7 @@
     <div class="shop-body">
       <div class="mt-2">
         <a-row>
-          <a-col :span="4" v-for="product in products.dataSource" :key="product">
+          <a-col v-for="product in products.dataSource" :key="product" style="width: 20%">
               <CardProduct :product="product" />
           </a-col>
         </a-row>
@@ -145,13 +145,13 @@ export default defineComponent ({
     CardProduct
   },
   created() {
-    this.getDataSourceProducts()
+    this.getProductByShopId(this.$route.params.id)
   },
   computed: {
     ...mapGetters(['products'])
   },
   methods: {
-    ...mapActions(['getDataSourceProducts'])
+    ...mapActions(['getProductByShopId'])
   },
   setup() {
     const current = ref(['shop']);

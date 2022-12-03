@@ -4,9 +4,9 @@
       <a-row>
         <a-col :span="9" class="box-image">
           <Carousel id="gallery" :items-to-show="1" :wrap-around="true" v-model="currentSlide" >
-            <Slide v-for="(image, i) in images" :key="i">
+            <Slide v-for="(image, i) in product.images" :key="i">
               <div class="carousel__item carousel__item--main">
-                <img :src="'/src/assets/images/products/' + image" alt="">
+                <img :src="'/src/assets/images/products/' + image.path" alt="">
               </div>
             </Slide>
           </Carousel>
@@ -19,10 +19,10 @@
             ref="carousel"
             class="image-product-sub"
           >
-            <Slide v-for="(image, i) in images" :key="i">
+            <Slide v-for="(image, i) in product.images" :key="i">
               <div class="carousel__item" @click="slideTo(i)">
                 <div class="box-img">
-                  <img :src="'/src/assets/images/products/' + image" alt="">
+                  <img :src="'/src/assets/images/products/' + image.path" alt="">
                 </div>
               </div>
             </Slide>
@@ -30,7 +30,7 @@
         </a-col>
         <a-col :span="15" class="box-content">
           <h3 class="title">
-            {{ product.name }}
+            {{ product.title }}
           </h3>
   
           <a-row>
@@ -80,13 +80,13 @@
                     <img src="/src/assets/images/shop/avatar.png" alt="">
                   </div>
                   <h4 class="name-shop text-ellipsis">
-                    Tiki Tranding
+                    {{ shop }}
                   </h4>
                 </div>
                 <div class="shop-slider">
                   <a-row :gutter="[8,8]">
                     <a-col :span="12">
-                      <router-link :to="{name: 'shop'}">
+                      <router-link :to="{name: 'shop', params: {id: idShop}}">
                         <a-button type="primary" ghost class="w-100 d-flex align-items-center" >
                             <ShopOutlined />
                             Xem shop
@@ -121,7 +121,7 @@
     <div class="describe-product bg-light mt-3 p-3 rounded">
       <h4>Mô tả sản phẩm</h4>
 
-      <DescribeProduct />
+      <DescribeProduct :text="product.description"/>
     </div>
   </div>
 </template>
@@ -134,8 +134,10 @@ import ChangeAddress from '@/components/client/ChangeAddress.vue'
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
-  created() {
-    this.getProduct()
+  async created() {
+    await this.getProduct(this.$route.params.id)
+    this.shop = this.product.seller.shop
+    this.idShop = this.product.seller.id
   },
   data() {
     return {
@@ -145,7 +147,8 @@ export default {
         'product-2.jpg',
         'product-3.jpg'
       ],
-      amountProduct: 1
+      shop: '',
+      idShop: 0
     }
   },
   components: {

@@ -48,7 +48,7 @@
 
         <div class="mt-2">
           <a-row>
-            <a-col v-for="product in products.dataSource" :key="product" :style="{width: '20%'}">
+            <a-col :span="6" v-for="product in products.dataSource" :key="product">
                 <CardProduct :product="product" />
             </a-col>
           </a-row>
@@ -61,7 +61,7 @@
 import FilterProduct from '@/components/client/FilterProduct.vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import CardProduct from '@/components/client/CardProduct.vue'
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapGetters, mapActions, mapMutations, mapState } from 'vuex';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
@@ -83,13 +83,13 @@ export default defineComponent({
     CardProduct
   },
   created() {
-    this.getDataSourceProducts()
+    this.getProductByCategoryId(this.$route.params.id)
   },
   computed: {
-    ...mapGetters(['products'])
+    ...mapGetters(['products']),
   },
   methods: {
-    ...mapActions(['getDataSourceProducts'])
+    ...mapActions(['getProductByCategoryId'])
   },
   setup() {
     const current = ref(['popular']);

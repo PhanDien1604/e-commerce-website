@@ -15,9 +15,6 @@
       <a-form-item label="Username" name="username">
         <a-input v-model:value="formState.username" />
       </a-form-item>
-      <a-form-item label="Birthday" name="birthday">
-        <a-input v-model:value="formState.birthday" />
-      </a-form-item>
       <a-form-item label="Tel" name="tel">
         <a-input v-model:value="formState.tel" />
       </a-form-item>
@@ -27,28 +24,39 @@
       <a-form-item label="Note" name="note">
         <a-textarea v-model:value="formState.note" placeholder="Note" :rows="4" />
       </a-form-item>
-      <a-form-item>
-        <a-button type="primary" html-type="submit">Submit</a-button>
-      </a-form-item>
     </a-form>
   </div>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
+  async created() {
+    await this.getProfile(1)
+    this.formState.account = this.userProfile.user.phone
+    this.formState.username = this.userProfile.username
+    this.formState.tel = this.userProfile.user.phone
+    this.formState.email = this.userProfile.user.email
+    this.formState.note = this.userProfile.note
+  },
   data() {
     return {
       formState: {
-        account: 'dienpq1604@gmail.com',
-        username: 'Phan Quang Điện',
-        birthday: '16/04/2001',
-        tel: '0963865764',
+        account: '',
+        username: '',
+        tel: '',
         email: '',
-        note: 'Yêu cái đẹp'
+        note: ''
       },
       rules: {
 
       }
     }
+  },
+  computed: {
+    ...mapState(['userProfile'])
+  },
+  methods: {
+    ...mapActions(['getProfile'])
   },
 }
 </script>

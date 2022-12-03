@@ -84,17 +84,17 @@ const router = createRouter({
           component: () => import('../views/pages/client/Home.vue')
         },
         {
-          path: '/product/detail',
+          path: '/product/:id',
           name: 'detailProduct',
           component: () => import('../views/pages/client/product/Detail.vue')
         },
         {
-          path: '/group/product',
+          path: '/group/:id/product',
           name: 'groupProduct',
           component: () => import('../views/pages/client/product/Group.vue')
         },
         {
-          path: '/shop',
+          path: '/shop/:id',
           name: 'shop',
           component: () => import('../views/pages/client/Shop.vue')
         },

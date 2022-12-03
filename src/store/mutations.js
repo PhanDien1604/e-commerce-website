@@ -18,7 +18,6 @@ export default {
         state.disableMinus = disableMinus
     },
     setVisibleChangeAddress(state, visibleChangeAddress) {
-        console.log(state.visibleChangeAddress)
         state.visibleChangeAddress = visibleChangeAddress
     },
     setDataSourceProducts(state, dataSource) {
@@ -30,4 +29,10 @@ export default {
     setCart(state, cart) {
         state.cart = cart
     },
+    setCategorise(state, categorise) {
+        state.categorise = categorise
+    },
+    setOrderPayment(state, orderPayment) {
+        state.orderPayment = orderPayment
+    }
 }

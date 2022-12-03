@@ -7,18 +7,18 @@
         <div class="cart bg-light rounded-3 p-4">
           <h5>Sản phẩm</h5>
 
-          <div class="cart-shop p-4 border rounded-3 mb-5 mt-5" v-for="(shop, i) in cart.shops" :key="i">
+          <div class="cart-shop p-4 border rounded-3 mb-5 mt-5" v-for="(shop, i) in shops" :key="i">
             <a-row class="cart-item position-relative" :id="i">
               <div class="name-shop">
-                <router-link :to="{name: 'shop'}">
+                <router-link :to="{name: 'shop', params: {id: shop.id}}">
                   <img src="/src/assets/images/icons/icon-shop.png" class="icon-shop me-1">
-                  <span>Tên Shop</span>
+                  <span>{{ shop.title }}</span>
                 </router-link>
               </div>
               <a-col :span="24" class="mt-4" v-for="(product, i) in shop.products" :key="i">
                 <a-row class="product-item">
                   <a-col :span="2">
-                      <router-link :to="{name: 'detailProduct'}">
+                      <router-link :to="{name: 'detailProduct',  params: {id: product.id}}">
                         <div class="d-flex align-items-center">
                           <div class="img-product">
                             <img src="/src/assets/images/products/product-10.jpg" alt="">
@@ -62,7 +62,7 @@
         <div class="box-buy mt-3 bg-light rounded p-3 font-size-16">
           <div class="d-flex justify-content-between">
             <div>Tạm tính</div>
-            <div>{{ cart.totalPrice }}<span>đ</span></div>
+            <div>{{ totalPrice }}<span>đ</span></div>
           </div>
           <div class="d-flex justify-content-between mt-2">
             <div>Giảm giá</div>
@@ -70,7 +70,7 @@
           </div>
           <div class="d-flex justify-content-between mt-2">
             <div class="fw-bold">Tổng tiền</div>
-            <div class="fw-bold">{{ cart.totalPrice }}<span>đ</span></div>
+            <div class="fw-bold">{{ totalPrice }}<span>đ</span></div>
 
             <div class="d-none">Vui lòng chọn sản phẩm</div>
           </div>
@@ -91,13 +91,33 @@ import AddressVue from '@/components/client/Address.vue'
 import SelectPaymentVue from '@/components/client/SelectPayment.vue'
 
 export default {
-  created() {
-    this.getCart()
+  async created() {
+    this.shops = this.cart[0].shops
+    var shops = []
+    var totalPrice = 0
+    this.shops.forEach((shop) => {
+      var products = shop.products.filter(product => product.checked === true);
+      shop.products = products
+      shops.push(shop)
+    })
+
+    shops = shops.filter((shop) => shop.products.length > 0)
+    this.shops = shops
+
+    this.shops.forEach((shop) => {
+      shop.products.forEach((product) => {
+        this.totalPrice+=product.price
+      })
+    })
+    console.log(shops)
   },
   data() {
     return {
       statusClick: true,
-      statusCLickItem: true
+      statusCLickItem: true,
+      order: {},
+      shops: [],
+      totalPrice: 0
     }
   },
   components: {
@@ -113,7 +133,7 @@ export default {
     ...mapGetters(['amountProduct', 'cart'])
   },
   methods: {
-    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem', 'getCart']),
+    ...mapActions(['minusAmount', 'plusAmount', 'checkAmount', 'changeAmount', 'onCheckAll', 'onCheckAllShop', 'onCheckAllItem']),
     ...mapMutations(['setVisibleChangeAddress']),
   }
 }

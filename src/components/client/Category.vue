@@ -1,43 +1,45 @@
 <template lang="">
   <div class="box-category">
     <h1>Danh mục</h1>
-    <Carousel :settings="settingsCarousel">
-      <Slide v-for="slide in 10" :key="slide">
-        <a-row type="flex">
-          <a-col :span="24">
-            <router-link :to="{name: 'groupProduct'}">
-              <a-card hoverable>
-                <template #cover>
-                  <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
-                </template>
-                <a-card-meta>
-                  <template #title>
-                    <span class="font-size-13">Giày thể thao nam</span>
+    <div v-if="categorise.length > 0">
+      <Carousel :settings="settingsCarousel">
+        <Slide v-for="(category, i) in categorise" :key="i">
+          <a-row class="w-100">
+            <a-col :span="24">
+              <router-link :to="{name: 'groupProduct', params: {id: category[0].id}}">
+                <a-card hoverable>
+                  <template #cover>
+                    <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
                   </template>
-                </a-card-meta>
-              </a-card>
-            </router-link>
-          </a-col>
-          <a-col :span="24">
-            <router-link :to="{name: 'groupProduct'}">
-              <a-card hoverable>
-                <template #cover>
-                  <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
-                </template>
-                <a-card-meta>
-                  <template #title>
-                    <span class="font-size-13">Shop</span>
+                  <a-card-meta>
+                    <template #title>
+                      <span class="font-size-13">{{ category[0].title }}</span>
+                    </template>
+                  </a-card-meta>
+                </a-card>
+              </router-link>
+            </a-col>
+            <a-col :span="24">
+              <router-link :to="{name: 'groupProduct', params: {id: category[1].id}}">
+                <a-card hoverable>
+                  <template #cover>
+                    <img alt="example" src="@/assets/images/icons/icon-category-1.png" />
                   </template>
-                </a-card-meta>
-              </a-card>
-            </router-link>
-          </a-col>
-        </a-row>
-      </Slide>
-      <template #addons>
-        <Navigation />
-      </template>
-    </Carousel>
+                  <a-card-meta>
+                    <template #title>
+                      <span class="font-size-13">{{ category[1].title }}</span>
+                    </template>
+                  </a-card-meta>
+                </a-card>
+              </router-link>
+            </a-col>
+          </a-row>
+        </Slide>
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
+    </div>
   </div>
 </template>
 <script>
@@ -54,6 +56,9 @@ export default {
       }
     }
   },
+  props: [
+    'categorise'
+  ],
   components: { 
     Carousel,
     Slide,

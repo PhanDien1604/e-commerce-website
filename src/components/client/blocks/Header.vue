@@ -14,7 +14,7 @@
             <div class="form-search">
               <input type="search" class="search" name="" id="" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn ...">
               <button class="btn-search">
-                <img src="@/assets/images/icon-search.png" class="icon-search" alt="">
+                <img src="@/assets/images/icon-search.png" class="icon-search" alt="" >
                 Tìm kiếm
               </button>
             </div>
@@ -63,8 +63,18 @@
   </header>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
-    
+  // async created() {
+  //   this.keyword = 'Laptop'
+  //   await this.search({keyword: this.keyword})
+  // },
+  // data: {
+  //   keyword: ''
+  // },
+  // methods: {
+  //   ...mapActions('search')
+  // },
 }
 </script>
 <style lang="">
